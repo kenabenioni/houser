@@ -18,5 +18,6 @@ massive(process.env.MY_URL).then(db => {
 
   app.get('/api/houses', ctrl.getHouses)
   app.post('/api/newhouse', ctrl.addHouse)
+  app.delete('/api/delete/:id', ctrl.deleteHouse)
   
   

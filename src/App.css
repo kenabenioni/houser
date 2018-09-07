@@ -1,5 +1,10 @@
+body {
+  background-color: #AFD4C0;
+}
+
 .App {
   text-align: center;
+  background-color: #AFD4C0;
 }
 
 .App-logo {
@@ -30,6 +35,13 @@
 .House {
   display: flex;
   flex-direction: row;
-  padding: 20px;
+  padding: 40px;
+  justify-content: space-around;
+  margin-right: 40vw;
   
+}
+
+.Header {
+  background-color: #519872;
+  padding: 20px;
 }

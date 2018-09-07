@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-import axios from 'axios';
+import axios from "axios";
+import {Route, Redirect} from 'react-router-dom';
 
 class Wizard extends Component {
   constructor(props) {
@@ -37,19 +38,28 @@ class Wizard extends Component {
     this.setState({ zipcode: e.target.value });
   }
   addHouse() {
-    axios.post('/api/newhouse', 
-    { name: this.state.name, 
-      address: this.state.address,
-      city: this.state.city,
-      state: this.state.state,
-      zipcode: this.state.zipcode
-    })
-      .then(res => {this.setState({name: '', address: '', city: '', state: '', zipcode: ''})
-    });
+    axios
+      .post("/api/newhouse", {
+        name: this.state.name,
+        address: this.state.address,
+        city: this.state.city,
+        state: this.state.state,
+        zipcode: this.state.zipcode
+      })
+      .then(
+        this.setState({
+          name: "",
+          address: "",
+          city: "",
+          state: "",
+          zipcode: ""
+        }),
+        this.props.history.push('/')
+      ),
+      window.location.reload();
   }
 
   render() {
-
     return (
       <div className="Wizard">
         <div className="newlisting">
@@ -60,28 +70,46 @@ class Wizard extends Component {
         </div>
         <div className="propertyname">
           <h3>Property Name</h3>
-          <input value ={this.state.name} onChange={this.handleName} type="text" />
+          <input
+            value={this.state.name}
+            onChange={this.handleName}
+            type="text"
+          />
         </div>
         <div className="address">
           <h3>Address</h3>
-          <input value ={this.state.address} onChange={this.handleAddress} type="text" />
+          <input
+            value={this.state.address}
+            onChange={this.handleAddress}
+            type="text"
+          />
         </div>
         <div className="city">
           <h3>City</h3>
-          <input value ={this.state.city} onChange={this.handleCity} type="text" />
+          <input
+            value={this.state.city}
+            onChange={this.handleCity}
+            type="text"
+          />
         </div>
         <div className="state">
           <h3>State</h3>
-          <input value ={this.state.state} onChange={this.handleState} type="text" />
+          <input
+            value={this.state.state}
+            onChange={this.handleState}
+            type="text"
+          />
         </div>
         <div className="zip">
           <h3>Zip</h3>
-          <input value ={this.state.zipcode} onChange={this.handleZip} type="text" />
+          <input
+            value={this.state.zipcode}
+            onChange={this.handleZip}
+            type="text"
+          />
         </div>
         <div className="complete">
-            <Link to={"/"}>
-          <button onClick={this.addHouse}>Complete</button>
-            </Link>
+            <button onClick={this.addHouse}>Complete</button>
         </div>
       </div>
     );

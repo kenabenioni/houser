@@ -15,9 +15,20 @@ module.exports = {
     const db = req.app.get("db");
     db.new_house({ name, address, city, state, zipcode })
       .then(houses => {
-        res.status(200).send(houses);
+        console.log(houses);
       })
       .catch(err => {
+        console.log(err);
+        res.status(500).send(err);
+      });
+  },
+  deleteHouse: (req, res) => {
+      let {id} = req.params;
+      const db = req.app.get("db");
+      db.delete_house({id})
+      .then(houses => {console.log(houses)
+    })
+    .catch(err => {
         console.log(err);
         res.status(500).send(err);
       });

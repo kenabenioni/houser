@@ -1,8 +1,8 @@
 import React from "react";
 
 const House = props => {
+  const { name, address, city, state, zip, id } = props;
   console.log(props);
-  const { name, address, city, state, zip } = props;
   return (
     <div className="House">
       <h3>House:</h3>
@@ -26,7 +26,7 @@ const House = props => {
           <h5>Zip Code:</h5>
           {zip}
       </div>
-      <button>Delete</button>
+      <button onClick={()=>{props.deleteHouse(id)}}>Delete</button>
     </div>
   );
 };
