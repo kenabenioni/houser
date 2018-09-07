@@ -26,3 +26,10 @@
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
 }
+
+.House {
+  display: flex;
+  flex-direction: row;
+  padding: 20px;
+  
+}
